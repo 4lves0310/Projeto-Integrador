@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Secretaria.unity
     guid: 9dd9db182a0ca164b936f57987568fdf
+  - enabled: 1
+    path: Assets/Scenes/SegundoAndar.unity
+    guid: a70a664829a1e3043955203672506e2f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
