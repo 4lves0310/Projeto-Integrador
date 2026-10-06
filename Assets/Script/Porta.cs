@@ -11,4 +11,8 @@ public class Porta : MonoBehaviour, IInteragivel
     {
         Debug.Log("Teleportando jogador ou mudando de cena...");
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
 }
