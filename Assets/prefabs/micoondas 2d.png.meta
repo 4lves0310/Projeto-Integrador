@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      micoondas 2d_0: 4165284428923244976
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
