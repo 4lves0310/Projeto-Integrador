@@ -16,9 +16,9 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        rb.velocity = moveInput * moveSpeed;
+        rb.velocity = Vector2.ClampMagnitude(moveInput, 1f) * moveSpeed;
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (context.canceled)
         {
-            animator.SetBool("isWalking", false); // <--- Corrigido aqui!
+            animator.SetBool("isWalking", false);
             animator.SetFloat("LastInputX", moveInput.x);
             animator.SetFloat("LastInputY", moveInput.y);
         }
