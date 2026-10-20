@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PressAnyKey : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
     [Header("Telas do Menu")]
     public GameObject telaAtual;
