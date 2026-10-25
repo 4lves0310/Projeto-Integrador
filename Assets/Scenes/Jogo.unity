@@ -38020,6 +38020,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2116718780}
   - component: {fileID: 2116718781}
+  - component: {fileID: 2116718783}
+  - component: {fileID: 2116718782}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -38060,6 +38062,37 @@ MonoBehaviour:
   itemPrefabs:
   - {fileID: 2870399207058084215, guid: df3d314430fa7664c8f9e11079e8239f, type: 3}
   - {fileID: 6122730860083835854, guid: cfb6253f96e329f4e8f747a445782e9a, type: 3}
+--- !u!114 &2116718782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116718778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c2c7ba65b4f3f45b7683a30a586c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 0}
+  slotPrefab: {fileID: 0}
+  slotCount: 0
+  itemPrefabs: []
+--- !u!114 &2116718783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116718778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458babf6c460c14468e87de351ce3c33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSceneName: SampleScene
+  continueButton: {fileID: 0}
+  statusText: {fileID: 0}
 --- !u!1 &2127673861
 GameObject:
   m_ObjectHideFlags: 0
