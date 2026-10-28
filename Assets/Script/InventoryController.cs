@@ -118,4 +118,30 @@ public class InventoryController : MonoBehaviour
         item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         slot.currentItem = item;
     }
+    
+public bool AddItemToInventory(GameObject prefab, int quantity)
+{
+    InitializeInventory();
+
+    if (prefab == null || quantity <= 0)
+        return false;
+
+    ItemData data = prefab.GetComponent<ItemData>();
+
+    if (data == null || FindItemPrefab(data.itemId) == null)
+        return false;
+
+    foreach (Slot slot in slots)
+    {
+        if (slot.currentItem == null)
+        {
+            CreateItem(prefab, slot, quantity);
+            return true;
+        }
+    }
+
+    Debug.LogWarning("Inventario cheio! Nao foi possivel receber o item.");
+    return false;
+}
+
 }
