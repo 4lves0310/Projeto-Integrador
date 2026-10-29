@@ -1,3 +1,4 @@
+
 using System;
 using System.IO;
 using TMPro;
@@ -23,13 +24,13 @@ public class SaveController : MonoBehaviour
 
     private static string lastStatus = "";
 
-    void OnEnable()
+    private void OnEnable()
     {
         StatusChanged += UpdateInterface;
         UpdateInterface(lastStatus);
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         StatusChanged -= UpdateInterface;
     }
@@ -171,6 +172,7 @@ public class SaveController : MonoBehaviour
             }
 
             Report("Save excluído!");
+            UpdateInterface(lastStatus);
         }
         catch (Exception error)
         {
@@ -247,7 +249,7 @@ public class SaveController : MonoBehaviour
             throw new InvalidDataException("Posição inválida no save.");
         }
 
-        // Saves antigos podem não ter inventário.
+        // Compatibilidade com saves antigos sem inventário.
         if (!json.Contains("\"items\""))
         {
             data.items = null;
@@ -267,8 +269,7 @@ public class SaveController : MonoBehaviour
 
     private static GameObject FindPlayer()
     {
-        GameObject player =
-            GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (player == null)
         {
@@ -288,17 +289,29 @@ public class SaveController : MonoBehaviour
                 FindObjectsSortMode.None
             );
 
+        // Procura primeiro na cena ativa.
         foreach (InventoryController inventory in inventories)
         {
-            if (inventory.gameObject.scene ==
-                SceneManager.GetActiveScene())
+            if (inventory != null &&
+                inventory.gameObject.scene == SceneManager.GetActiveScene() &&
+                inventory.isActiveAndEnabled)
+            {
+                return inventory;
+            }
+        }
+
+        // Procura em outras cenas, inclusive objetos persistentes.
+        foreach (InventoryController inventory in inventories)
+        {
+            if (inventory != null && inventory.isActiveAndEnabled)
             {
                 return inventory;
             }
         }
 
         throw new InvalidOperationException(
-            "InventoryController não encontrado na cena do jogo."
+            "InventoryController não encontrado. " +
+            "Verifique se o inventário existe e está habilitado."
         );
     }
 
