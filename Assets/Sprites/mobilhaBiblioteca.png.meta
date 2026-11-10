@@ -1,0 +1,590 @@
+fileFormatVersion: 2
+guid: e5c1e12f5dcbc73409ab0d690e077c9b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7969093975869299567
+    second: mobilhaBiblioteca_0
+  - first:
+      213: -2274211970663926644
+    second: mobilhaBiblioteca_1
+  - first:
+      213: -8797415416696360982
+    second: mobilhaBiblioteca_2
+  - first:
+      213: 4496976039412235843
+    second: mobilhaBiblioteca_3
+  - first:
+      213: -4246409475937571746
+    second: mobilhaBiblioteca_4
+  - first:
+      213: 4718624498949292457
+    second: mobilhaBiblioteca_5
+  - first:
+      213: 1960367609219775124
+    second: mobilhaBiblioteca_6
+  - first:
+      213: -2940411396927330850
+    second: mobilhaBiblioteca_7
+  - first:
+      213: 887824347054876136
+    second: mobilhaBiblioteca_8
+  - first:
+      213: -4991605033901872034
+    second: mobilhaBiblioteca_9
+  - first:
+      213: -8772155042561241184
+    second: mobilhaBiblioteca_10
+  - first:
+      213: 6375709269266691084
+    second: mobilhaBiblioteca_11
+  - first:
+      213: 2778838839293582447
+    second: mobilhaBiblioteca_12
+  - first:
+      213: -4546395442230868568
+    second: mobilhaBiblioteca_13
+  - first:
+      213: -6812294066519934490
+    second: mobilhaBiblioteca_14
+  - first:
+      213: 1026239216746823507
+    second: mobilhaBiblioteca_15
+  - first:
+      213: -8491396206132731141
+    second: mobilhaBiblioteca_16
+  - first:
+      213: 3082251445788868266
+    second: mobilhaBiblioteca_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_0
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 375
+        width: 84
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 1, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6b156dbfb8e79e60800000000000000
+      internalID: 7969093975869299567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 282
+        width: 87
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c84b2a013406070e0800000000000000
+      internalID: -2274211970663926644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_2
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 309
+        width: 61
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aefa44a0a4d49e580800000000000000
+      internalID: -8797415416696360982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_3
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 309
+        width: 66
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34efb90c1e7786e30800000000000000
+      internalID: 4496976039412235843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_4
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 311
+        width: 85
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5c63ef7419b115c0800000000000000
+      internalID: -4246409475937571746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_5
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 240
+        width: 87
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a104504bfbeb7140800000000000000
+      internalID: 4718624498949292457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_6
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 245
+        width: 62
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49af9b044ff943b10800000000000000
+      internalID: 1960367609219775124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_7
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 245
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed5e2a8d96f8137d0800000000000000
+      internalID: -2940411396927330850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_8
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 241
+        width: 106
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e5262d2a8f225c00800000000000000
+      internalID: 887824347054876136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_9
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 241
+        width: 23
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5c2a371ba14abab0800000000000000
+      internalID: -4991605033901872034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_10
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 165
+        width: 33
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0af4c75377b034680800000000000000
+      internalID: -8772155042561241184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_11
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 173
+        width: 87
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c047ec9ecc11b7850800000000000000
+      internalID: 6375709269266691084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_12
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 96
+        width: 75
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6c1720933b609620800000000000000
+      internalID: 2778838839293582447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_13
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 96
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a5cf51ee65f7e0c0800000000000000
+      internalID: -4546395442230868568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_14
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 100
+        width: 63
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e9f39bb3aed571a0800000000000000
+      internalID: -6812294066519934490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_15
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 35
+        width: 49
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ff4c0612fed3e00800000000000000
+      internalID: 1026239216746823507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_16
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 35
+        width: 56
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf2eb5ec320882a80800000000000000
+      internalID: -8491396206132731141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mobilhaBiblioteca_17
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 0
+        width: 59
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaefda60c5b56ca20800000000000000
+      internalID: 3082251445788868266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 39ffde575ad45684d9286414f14fa48a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      mobilhaBiblioteca_0: 7969093975869299567
+      mobilhaBiblioteca_1: -2274211970663926644
+      mobilhaBiblioteca_10: -8772155042561241184
+      mobilhaBiblioteca_11: 6375709269266691084
+      mobilhaBiblioteca_12: 2778838839293582447
+      mobilhaBiblioteca_13: -4546395442230868568
+      mobilhaBiblioteca_14: -6812294066519934490
+      mobilhaBiblioteca_15: 1026239216746823507
+      mobilhaBiblioteca_16: -8491396206132731141
+      mobilhaBiblioteca_17: 3082251445788868266
+      mobilhaBiblioteca_2: -8797415416696360982
+      mobilhaBiblioteca_3: 4496976039412235843
+      mobilhaBiblioteca_4: -4246409475937571746
+      mobilhaBiblioteca_5: 4718624498949292457
+      mobilhaBiblioteca_6: 1960367609219775124
+      mobilhaBiblioteca_7: -2940411396927330850
+      mobilhaBiblioteca_8: 887824347054876136
+      mobilhaBiblioteca_9: -4991605033901872034
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
