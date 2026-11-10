@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+using System.Collections;
+>>>>>>> 8eede34eea5137a3ac19d749beebddb7174ad3a2
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +13,7 @@ public class InventoryController : MonoBehaviour
     public int slotCount;
     public GameObject[] itemPrefabs;
 
+<<<<<<< HEAD
     private readonly List<Slot> slots = new List<Slot>();
     private bool initialized;
 
@@ -145,3 +150,20 @@ public bool AddItemToInventory(GameObject prefab, int quantity)
 }
 
 }
+=======
+    // Start is called before the first frame update
+    void Start()
+    {
+        for (int i = 0; i < slotCount; i++)
+        {
+            Slot slot = Instantiate(slotPrefab, inventoryPanel.transform).GetComponent<Slot>();
+            if (i < itemPrefabs.Length)
+            {
+                GameObject item = Instantiate(itemPrefabs[i], slot.transform);
+                item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                slot.currentItem = item;
+            }
+        }
+    }
+}
+>>>>>>> 8eede34eea5137a3ac19d749beebddb7174ad3a2

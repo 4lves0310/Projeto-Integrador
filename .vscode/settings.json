@@ -56,5 +56,9 @@
         "temp/": true,
         "Temp/": true
     },
+<<<<<<< HEAD
     "dotnet.defaultSolution": "Projeto-Integrador.sln"
+=======
+    "dotnet.defaultSolution": "PI.sln"
+>>>>>>> 8eede34eea5137a3ac19d749beebddb7174ad3a2
 }

@@ -5,7 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8eede34eea5137a3ac19d749beebddb7174ad3a2
     [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
