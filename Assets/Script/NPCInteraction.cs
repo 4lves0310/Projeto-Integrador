@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -16,9 +15,9 @@ public class NPCInteraction : MonoBehaviour
     [TextArea(2, 5)]
     public string[] falas;
 
-    [Header("Recompensa")]
-    public InventoryController inventario;
-    public GameObject itemRecompensa;
+    [Header("Drop de Item")]
+    public GameObject prefabItemNoChao; // Arraste o Prefab do item coletável (com BoxCollider2D)
+    public Transform pontoDeDrop;       // Opcional: um objeto vazio na frente do NPC onde o item vai cair
     public int quantidadeItem = 1;
 
     [Header("Troca de Cena")]
@@ -121,32 +120,11 @@ public class NPCInteraction : MonoBehaviour
 
     private void FinalizarDialogo()
     {
-        if (itemRecompensa != null && !recompensaEntregue)
+        // Dropa o item no chão se houver um configurado e ainda não tiver sido entregue
+        if (prefabItemNoChao != null && !recompensaEntregue)
         {
-            if (inventario == null)
-            {
-                Debug.LogWarning("Configure o inventario do NPC.");
-                return;
-            }
-
-            bool recebeu = inventario.AddItemToInventory(
-                itemRecompensa, quantidadeItem);
-
-            if (!recebeu)
-            {
-                if (textoDialogo != null)
-                {
-                    textoDialogo.text =
-                        "Inventario cheio ou item invalido! " +
-                        "Libere espaco e pressione E para tentar novamente.";
-                }
-
-                indiceFala = falas.Length;
-                return;
-            }
-
+            DroparItem();
             recompensaEntregue = true;
-            Debug.Log("Item recebido: " + itemRecompensa.name);
         }
 
         dialogoAtivo = false;
@@ -173,5 +151,20 @@ public class NPCInteraction : MonoBehaviour
             painelInteracao.SetActive(true);
 
         Debug.Log("Dialogo concluido!");
+    }
+
+    private void DroparItem()
+    {
+        for (int i = 0; i < quantidadeItem; i++)
+        {
+            // Se você definiu um ponto específico, dropa lá; senão, dropa 1 unidade abaixo do NPC
+            Vector3 posicaoDrop = pontoDeDrop != null
+                ? pontoDeDrop.position
+                : transform.position + new Vector3(Random.Range(-0.5f, 0.5f), -1f, 0f);
+
+            Instantiate(prefabItemNoChao, posicaoDrop, Quaternion.identity);
+        }
+
+        Debug.Log("Item dropado no chão: " + prefabItemNoChao.name);
     }
 }

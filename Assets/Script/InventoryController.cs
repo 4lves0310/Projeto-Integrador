@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
@@ -18,13 +20,41 @@ public class InventoryController : MonoBehaviour
         catch (Exception error) { Debug.LogError(error.Message, this); }
     }
 
+    public static InventoryController FindActiveInventory()
+    {
+        InventoryController[] inventories = FindObjectsByType<InventoryController>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None);
+
+        InventoryController fallback = null;
+        foreach (InventoryController inventory in inventories)
+        {
+            if (inventory == null || !inventory.isActiveAndEnabled)
+                continue;
+            if (!IsInLoadedScene(inventory.gameObject))
+                continue;
+
+            if (inventory.gameObject.scene == SceneManager.GetActiveScene())
+                return inventory;
+
+            if (fallback == null)
+                fallback = inventory;
+        }
+
+        return fallback;
+    }
+
     // Funciona também quando o painel está inativo e seu Start ainda não rodou.
     public void InitializeInventory()
     {
+        ResolveInventoryPanel();
         if (initialized) return;
         if (inventoryPanel == null || slotPrefab == null || slotCount <= 0 ||
             slotPrefab.GetComponent<Slot>() == null)
             throw new InvalidOperationException("Configure painel, prefab e quantidade de slots.");
+        if (!IsInLoadedScene(inventoryPanel))
+            throw new InvalidOperationException(
+                "O Inventory Panel aponta para um prefab, não para o InventoryPage da cena.");
         ValidateCatalog();
         for (int i = 0; i < slotCount; i++)
             slots.Add(Instantiate(slotPrefab, inventoryPanel.transform).GetComponent<Slot>());
@@ -33,6 +63,49 @@ public class InventoryController : MonoBehaviour
         for (int i = 0; i < slots.Count && i < itemPrefabs.Length; i++)
             if (itemPrefabs[i] != null)
                 CreateItem(itemPrefabs[i], slots[i], itemPrefabs[i].GetComponent<ItemData>().quantity);
+    }
+
+    private void ResolveInventoryPanel()
+    {
+        if (IsInLoadedScene(inventoryPanel))
+            return;
+
+        if (initialized)
+        {
+            slots.Clear();
+            initialized = false;
+        }
+
+        inventoryPanel = FindSceneInventoryPage();
+    }
+
+    private static GameObject FindSceneInventoryPage()
+    {
+        GridLayoutGroup[] groups = FindObjectsByType<GridLayoutGroup>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None);
+
+        GameObject fallback = null;
+        foreach (GridLayoutGroup group in groups)
+        {
+            if (group == null || group.gameObject.name != "InventoryPage")
+                continue;
+            if (!IsInLoadedScene(group.gameObject))
+                continue;
+
+            if (group.gameObject.scene == SceneManager.GetActiveScene())
+                return group.gameObject;
+
+            if (fallback == null)
+                fallback = group.gameObject;
+        }
+
+        return fallback;
+    }
+
+    private static bool IsInLoadedScene(GameObject obj)
+    {
+        return obj != null && obj.scene.IsValid() && obj.scene.isLoaded;
     }
 
     private void ValidateCatalog()
@@ -76,8 +149,11 @@ public class InventoryController : MonoBehaviour
             ItemData data = item.GetComponent<ItemData>();
             if (data == null || data.quantity <= 0 || FindItemPrefab(data.itemId) == null)
                 throw new InvalidOperationException("Item sem cadastro válido: " + item.name);
-            items.Add(new ItemSaveData {
-                itemId = data.itemId, quantity = data.quantity, slotIndex = i
+            items.Add(new ItemSaveData
+            {
+                itemId = data.itemId,
+                quantity = data.quantity,
+                slotIndex = i
             });
         }
         return items;
@@ -115,33 +191,37 @@ public class InventoryController : MonoBehaviour
     {
         GameObject item = Instantiate(prefab, slot.transform);
         item.GetComponent<ItemData>().quantity = quantity;
-        item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        RectTransform rect = item.GetComponent<RectTransform>();
+        rect.anchoredPosition = Vector2.zero;
+        Vector3 position = rect.localPosition;
+        rect.localPosition = new Vector3(position.x, position.y, 0f);
+        rect.localScale = Vector3.one;
         slot.currentItem = item;
     }
-    
-public bool AddItemToInventory(GameObject prefab, int quantity)
-{
-    InitializeInventory();
 
-    if (prefab == null || quantity <= 0)
-        return false;
-
-    ItemData data = prefab.GetComponent<ItemData>();
-
-    if (data == null || FindItemPrefab(data.itemId) == null)
-        return false;
-
-    foreach (Slot slot in slots)
+    public bool AddItemToInventory(GameObject prefab, int quantity)
     {
-        if (slot.currentItem == null)
+        InitializeInventory();
+
+        if (prefab == null || quantity <= 0)
+            return false;
+
+        ItemData data = prefab.GetComponent<ItemData>();
+        GameObject uiPrefab = data != null ? FindItemPrefab(data.itemId) : null;
+
+        if (uiPrefab == null)
+            return false;
+
+        foreach (Slot slot in slots)
         {
-            CreateItem(prefab, slot, quantity);
-            return true;
+            if (slot.currentItem == null)
+            {
+                CreateItem(uiPrefab, slot, quantity);
+                return true;
+            }
         }
+
+        Debug.LogWarning("Inventario cheio! Nao foi possivel receber o item.");
+        return false;
     }
-
-    Debug.LogWarning("Inventario cheio! Nao foi possivel receber o item.");
-    return false;
-}
-
 }

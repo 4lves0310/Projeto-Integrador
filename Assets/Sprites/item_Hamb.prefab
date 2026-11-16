@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf9b97422d94a9fb1795d5014a49f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: hamburger
+  itemId: hamburguer
   quantity: 1
