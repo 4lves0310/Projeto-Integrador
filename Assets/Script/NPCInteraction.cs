@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -14,7 +13,27 @@ public class NPCInteraction : MonoBehaviour
     public TMP_Text textoDialogo;
 
     [TextArea(2, 5)]
-    public string[] falas;
+    public string[] falas; // Falas iniciais (antes de aceitar a missao)
+
+    [TextArea(2, 5)]
+    public string[] falasEmAndamento; // Opcional: enquanto faz a missao
+
+    [TextArea(2, 5)]
+    public string[] falasConcluida; // Falas depois que concluiu a missao
+
+    [Header("Missao")]
+    public bool darMissaoAoFinalizar = false;
+    public Missao missaoParaEntregar;
+
+    [Space(5)]
+    public bool avancarMissaoAoFinalizar = false;
+    public string idAlvoMissao;
+
+    [Header("Icone em cima do NPC")]
+    public SpriteRenderer iconeMissao; // SpriteRenderer filho em cima da cabeca do NPC
+    public Sprite spriteDisponivel;    // Ex: ponto de exclamacao (!)
+    public Sprite spriteEmAndamento;   // Ex: interrogacao cinza (ou deixe vazio para esconder)
+    public Sprite spriteConcluida;     // Ex: check verde ou estrela
 
     [Header("Recompensa")]
     public InventoryController inventario;
@@ -29,6 +48,7 @@ public class NPCInteraction : MonoBehaviour
     private bool dialogoAtivo;
     private bool recompensaEntregue;
     private int indiceFala;
+    private string[] falasAtuais;
 
     void Start()
     {
@@ -37,10 +57,14 @@ public class NPCInteraction : MonoBehaviour
 
         if (painelDialogo != null)
             painelDialogo.SetActive(false);
+
+        AtualizarIconeMissao();
     }
 
     void Update()
     {
+        AtualizarIconeMissao();
+
         if (!jogadorPerto)
             return;
 
@@ -50,6 +74,38 @@ public class NPCInteraction : MonoBehaviour
                 IniciarDialogo();
             else
                 ProximaFala();
+        }
+    }
+
+    private void AtualizarIconeMissao()
+    {
+        if (iconeMissao == null || !darMissaoAoFinalizar || missaoParaEntregar == null)
+            return;
+
+        Sprite spriteEscolhido = null;
+
+        switch (missaoParaEntregar.status)
+        {
+            case StatusMissao.Disponivel:
+                spriteEscolhido = spriteDisponivel;
+                break;
+            case StatusMissao.EmAndamento:
+                spriteEscolhido = spriteEmAndamento;
+                break;
+            case StatusMissao.Concluida:
+                spriteEscolhido = spriteConcluida;
+                break;
+        }
+
+        if (spriteEscolhido != null)
+        {
+            iconeMissao.sprite = spriteEscolhido;
+            iconeMissao.enabled = true;
+        }
+        else
+        {
+            // Se voce deixar algum sprite vazio no Inspector, o icone fica invisivel naquele estado
+            iconeMissao.enabled = false;
         }
     }
 
@@ -85,7 +141,22 @@ public class NPCInteraction : MonoBehaviour
 
     private void IniciarDialogo()
     {
-        if (falas == null || falas.Length == 0)
+        // Escolhe qual lista de falas usar conforme o status da missao
+        falasAtuais = falas;
+
+        if (darMissaoAoFinalizar && missaoParaEntregar != null)
+        {
+            if (missaoParaEntregar.status == StatusMissao.Concluida && falasConcluida != null && falasConcluida.Length > 0)
+            {
+                falasAtuais = falasConcluida;
+            }
+            else if (missaoParaEntregar.status == StatusMissao.EmAndamento && falasEmAndamento != null && falasEmAndamento.Length > 0)
+            {
+                falasAtuais = falasEmAndamento;
+            }
+        }
+
+        if (falasAtuais == null || falasAtuais.Length == 0)
         {
             Debug.LogWarning("Configure as falas do NPC.");
             return;
@@ -107,7 +178,7 @@ public class NPCInteraction : MonoBehaviour
     {
         indiceFala++;
 
-        if (indiceFala < falas.Length)
+        if (indiceFala < falasAtuais.Length)
             AtualizarTexto();
         else
             FinalizarDialogo();
@@ -116,7 +187,7 @@ public class NPCInteraction : MonoBehaviour
     private void AtualizarTexto()
     {
         if (textoDialogo != null)
-            textoDialogo.text = falas[indiceFala];
+            textoDialogo.text = falasAtuais[indiceFala];
     }
 
     private void FinalizarDialogo()
@@ -141,7 +212,7 @@ public class NPCInteraction : MonoBehaviour
                         "Libere espaco e pressione E para tentar novamente.";
                 }
 
-                indiceFala = falas.Length;
+                indiceFala = falasAtuais.Length;
                 return;
             }
 
@@ -153,6 +224,22 @@ public class NPCInteraction : MonoBehaviour
 
         if (painelDialogo != null)
             painelDialogo.SetActive(false);
+
+        // --- SISTEMA DE MISSOES ---
+        if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status == StatusMissao.Disponivel)
+        {
+            if (QuestManager.Instance != null)
+                QuestManager.Instance.AceitarMissao(missaoParaEntregar);
+            else
+                Debug.LogWarning("QuestManager nao encontrado na cena!");
+        }
+
+        if (avancarMissaoAoFinalizar && !string.IsNullOrWhiteSpace(idAlvoMissao))
+        {
+            if (QuestManager.Instance != null)
+                QuestManager.Instance.AtualizarProgresso(idAlvoMissao, 1);
+        }
+        // --------------------------
 
         if (trocarCenaAoFinalizar)
         {

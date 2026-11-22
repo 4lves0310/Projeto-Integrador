@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Herculano_0: -2087901334090678453
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
