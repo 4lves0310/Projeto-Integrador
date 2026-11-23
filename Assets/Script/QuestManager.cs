@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -8,10 +9,11 @@ public class QuestManager : MonoBehaviour
 
     [Header("Nivel do Jogador")]
     public int nivelAtual = 1;
-    public TMP_Text textoNivel; // Arraste aqui o TextMeshPro do LVL
+    public TMP_Text textoNivel;
 
     [Header("Missao Atual")]
     public Missao missaoAtual;
+    public List<string> missoesConcluidas = new List<string>();
 
     [Header("Interface")]
     public GameObject objetoDaBarra;
@@ -31,6 +33,12 @@ public class QuestManager : MonoBehaviour
         if (textoMissaoConcluida != null) textoMissaoConcluida.SetActive(false);
 
         AtualizarTextoNivel();
+    }
+
+    public bool MissaoFoiConcluida(string idMissao)
+    {
+        if (string.IsNullOrWhiteSpace(idMissao)) return true;
+        return missoesConcluidas.Contains(idMissao);
     }
 
     public void AceitarMissao(Missao novaMissao)
@@ -94,6 +102,10 @@ public class QuestManager : MonoBehaviour
     private void CompletarMissao()
     {
         missaoAtual.status = StatusMissao.Concluida;
+
+        if (!missoesConcluidas.Contains(missaoAtual.idMissao))
+            missoesConcluidas.Add(missaoAtual.idMissao);
+
         Debug.Log("Missao concluida: " + missaoAtual.idMissao);
 
         SubirDeNivel();

@@ -13,27 +13,32 @@ public class NPCInteraction : MonoBehaviour
     public TMP_Text textoDialogo;
 
     [TextArea(2, 5)]
-    public string[] falas; // Falas iniciais (antes de aceitar a missao)
+    public string[] falasBloqueada; // Falas se o jogador falar antes da hora
 
     [TextArea(2, 5)]
-    public string[] falasEmAndamento; // Opcional: enquanto faz a missao
+    public string[] falas;
 
     [TextArea(2, 5)]
-    public string[] falasConcluida; // Falas depois que concluiu a missao
+    public string[] falasEmAndamento;
+
+    [TextArea(2, 5)]
+    public string[] falasConcluida;
 
     [Header("Missao")]
+    public string idMissaoAnteriorNecessaria; // Deixe vazio no 1º NPC
     public bool darMissaoAoFinalizar = false;
     public Missao missaoParaEntregar;
+    public GameObject[] objetosParaAtivar;
 
     [Space(5)]
     public bool avancarMissaoAoFinalizar = false;
     public string idAlvoMissao;
 
     [Header("Icone em cima do NPC")]
-    public SpriteRenderer iconeMissao; // SpriteRenderer filho em cima da cabeca do NPC
-    public Sprite spriteDisponivel;    // Ex: ponto de exclamacao (!)
-    public Sprite spriteEmAndamento;   // Ex: interrogacao cinza (ou deixe vazio para esconder)
-    public Sprite spriteConcluida;     // Ex: check verde ou estrela
+    public SpriteRenderer iconeMissao;
+    public Sprite spriteDisponivel;
+    public Sprite spriteEmAndamento;
+    public Sprite spriteConcluida;
 
     [Header("Recompensa")]
     public InventoryController inventario;
@@ -58,6 +63,11 @@ public class NPCInteraction : MonoBehaviour
         if (painelDialogo != null)
             painelDialogo.SetActive(false);
 
+        if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status == StatusMissao.Disponivel)
+        {
+            DefinirObjetosMissao(false);
+        }
+
         AtualizarIconeMissao();
     }
 
@@ -77,10 +87,39 @@ public class NPCInteraction : MonoBehaviour
         }
     }
 
+    private bool EstaBloqueado()
+    {
+        if (string.IsNullOrWhiteSpace(idMissaoAnteriorNecessaria))
+            return false;
+
+        if (QuestManager.Instance == null)
+            return true;
+
+        return !QuestManager.Instance.MissaoFoiConcluida(idMissaoAnteriorNecessaria);
+    }
+
+    private void DefinirObjetosMissao(bool ativo)
+    {
+        if (objetosParaAtivar == null) return;
+
+        foreach (GameObject obj in objetosParaAtivar)
+        {
+            if (obj != null)
+                obj.SetActive(ativo);
+        }
+    }
+
     private void AtualizarIconeMissao()
     {
         if (iconeMissao == null || !darMissaoAoFinalizar || missaoParaEntregar == null)
             return;
+
+        // Esconde o icone enquanto o NPC estiver bloqueado
+        if (EstaBloqueado())
+        {
+            iconeMissao.enabled = false;
+            return;
+        }
 
         Sprite spriteEscolhido = null;
 
@@ -104,7 +143,6 @@ public class NPCInteraction : MonoBehaviour
         }
         else
         {
-            // Se voce deixar algum sprite vazio no Inspector, o icone fica invisivel naquele estado
             iconeMissao.enabled = false;
         }
     }
@@ -141,18 +179,24 @@ public class NPCInteraction : MonoBehaviour
 
     private void IniciarDialogo()
     {
-        // Escolhe qual lista de falas usar conforme o status da missao
-        falasAtuais = falas;
-
-        if (darMissaoAoFinalizar && missaoParaEntregar != null)
+        if (EstaBloqueado())
         {
-            if (missaoParaEntregar.status == StatusMissao.Concluida && falasConcluida != null && falasConcluida.Length > 0)
+            falasAtuais = falasBloqueada;
+        }
+        else
+        {
+            falasAtuais = falas;
+
+            if (darMissaoAoFinalizar && missaoParaEntregar != null)
             {
-                falasAtuais = falasConcluida;
-            }
-            else if (missaoParaEntregar.status == StatusMissao.EmAndamento && falasEmAndamento != null && falasEmAndamento.Length > 0)
-            {
-                falasAtuais = falasEmAndamento;
+                if (missaoParaEntregar.status == StatusMissao.Concluida && falasConcluida != null && falasConcluida.Length > 0)
+                {
+                    falasAtuais = falasConcluida;
+                }
+                else if (missaoParaEntregar.status == StatusMissao.EmAndamento && falasEmAndamento != null && falasEmAndamento.Length > 0)
+                {
+                    falasAtuais = falasEmAndamento;
+                }
             }
         }
 
@@ -192,6 +236,19 @@ public class NPCInteraction : MonoBehaviour
 
     private void FinalizarDialogo()
     {
+        dialogoAtivo = false;
+
+        if (painelDialogo != null)
+            painelDialogo.SetActive(false);
+
+        // Se estava bloqueado, apenas fecha o dialogo e nao entrega nada
+        if (EstaBloqueado())
+        {
+            if (painelInteracao != null && jogadorPerto)
+                painelInteracao.SetActive(true);
+            return;
+        }
+
         if (itemRecompensa != null && !recompensaEntregue)
         {
             if (inventario == null)
@@ -205,6 +262,9 @@ public class NPCInteraction : MonoBehaviour
 
             if (!recebeu)
             {
+                dialogoAtivo = true;
+                if (painelDialogo != null) painelDialogo.SetActive(true);
+
                 if (textoDialogo != null)
                 {
                     textoDialogo.text =
@@ -220,16 +280,14 @@ public class NPCInteraction : MonoBehaviour
             Debug.Log("Item recebido: " + itemRecompensa.name);
         }
 
-        dialogoAtivo = false;
-
-        if (painelDialogo != null)
-            painelDialogo.SetActive(false);
-
         // --- SISTEMA DE MISSOES ---
         if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status == StatusMissao.Disponivel)
         {
             if (QuestManager.Instance != null)
+            {
                 QuestManager.Instance.AceitarMissao(missaoParaEntregar);
+                DefinirObjetosMissao(true);
+            }
             else
                 Debug.LogWarning("QuestManager nao encontrado na cena!");
         }
