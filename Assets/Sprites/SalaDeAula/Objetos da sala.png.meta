@@ -1,0 +1,1190 @@
+fileFormatVersion: 2
+guid: 66668a4c1e53dbf4080501d7f22a85d1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6923928629211005104
+    second: Objetos da sala_0
+  - first:
+      213: -3861036745648108377
+    second: Objetos da sala_1
+  - first:
+      213: -7383802348175171211
+    second: Objetos da sala_2
+  - first:
+      213: 8939691824921640206
+    second: Objetos da sala_3
+  - first:
+      213: 1280143348651942701
+    second: Objetos da sala_4
+  - first:
+      213: -1878492587726191045
+    second: Objetos da sala_5
+  - first:
+      213: 7178484302732536945
+    second: Objetos da sala_6
+  - first:
+      213: -1393358570168164342
+    second: Objetos da sala_7
+  - first:
+      213: 6224314388720476784
+    second: Objetos da sala_8
+  - first:
+      213: -2503544394398726470
+    second: Objetos da sala_9
+  - first:
+      213: 4437018700462657410
+    second: Objetos da sala_10
+  - first:
+      213: 7135815486186494877
+    second: Objetos da sala_11
+  - first:
+      213: 6090767271219728812
+    second: Objetos da sala_12
+  - first:
+      213: 6874362806946424318
+    second: Objetos da sala_13
+  - first:
+      213: 6151027180911381329
+    second: Objetos da sala_14
+  - first:
+      213: 4138452317400232165
+    second: Objetos da sala_15
+  - first:
+      213: 1138229714094956993
+    second: Objetos da sala_16
+  - first:
+      213: -3491344281227793028
+    second: Objetos da sala_17
+  - first:
+      213: 4253042092767850469
+    second: Objetos da sala_18
+  - first:
+      213: -5072626033758901263
+    second: Objetos da sala_19
+  - first:
+      213: 8651743841561964341
+    second: Objetos da sala_20
+  - first:
+      213: -2403165573968189555
+    second: Objetos da sala_21
+  - first:
+      213: -4319366229329127894
+    second: Objetos da sala_22
+  - first:
+      213: -4881981277477338785
+    second: Objetos da sala_23
+  - first:
+      213: 7143712019734825886
+    second: Objetos da sala_24
+  - first:
+      213: -9151871951736018973
+    second: Objetos da sala_25
+  - first:
+      213: -288439557240667482
+    second: Objetos da sala_26
+  - first:
+      213: 9108062750497431090
+    second: Objetos da sala_27
+  - first:
+      213: -7534299285318325538
+    second: Objetos da sala_28
+  - first:
+      213: 706468539276241244
+    second: Objetos da sala_29
+  - first:
+      213: -5200017487602784787
+    second: Objetos da sala_30
+  - first:
+      213: 3244623450585513504
+    second: Objetos da sala_31
+  - first:
+      213: -1528516229540194289
+    second: Objetos da sala_32
+  - first:
+      213: 7861696292047833269
+    second: Objetos da sala_33
+  - first:
+      213: 7257290598433312459
+    second: Objetos da sala_34
+  - first:
+      213: -4042681818001483348
+    second: Objetos da sala_35
+  - first:
+      213: -4094574690929235920
+    second: Objetos da sala_36
+  - first:
+      213: 7764471185999675187
+    second: Objetos da sala_37
+  - first:
+      213: 1255155009771564174
+    second: Objetos da sala_38
+  - first:
+      213: 7440584444313307870
+    second: Objetos da sala_39
+  - first:
+      213: -3377676616305625014
+    second: Objetos da sala_40
+  - first:
+      213: -1203186047845997881
+    second: Objetos da sala_41
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Objetos da sala_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 654
+        width: 58
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f78b5a89349ef90800000000000000
+      internalID: -6923928629211005104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 666
+        width: 66
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ac0ae65987da6ac0800000000000000
+      internalID: -3861036745648108377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_2
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 651
+        width: 32
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 571e259a2e6778990800000000000000
+      internalID: -7383802348175171211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_3
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 663
+        width: 58
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0dfae9a95a201c70800000000000000
+      internalID: 8939691824921640206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_4
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 662
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d236af5d79bf3c110800000000000000
+      internalID: 1280143348651942701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_5
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 662
+        width: 52
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b364063b1f04ee5e0800000000000000
+      internalID: -1878492587726191045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_6
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 657
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17c271aa0791f9360800000000000000
+      internalID: 7178484302732536945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_7
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 603
+        width: 64
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a00616443cbc9ace0800000000000000
+      internalID: -1393358570168164342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_8
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 589
+        width: 64
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 072690e65f4316650800000000000000
+      internalID: 6224314388720476784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_9
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 612
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab6817c33af914dd0800000000000000
+      internalID: -2503544394398726470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_10
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 612
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28f87deeff4739d30800000000000000
+      internalID: 4437018700462657410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_11
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 612
+        width: 54
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9b90e4a062870360800000000000000
+      internalID: 7135815486186494877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_12
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 620
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca190aa1090c68450800000000000000
+      internalID: 6090767271219728812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_13
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 618
+        width: 54
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef5e23d0d84a66f50800000000000000
+      internalID: 6874362806946424318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_14
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 544
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15bcef9a1a6dc5550800000000000000
+      internalID: 6151027180911381329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_15
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 582
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e0788ac47cbe6930800000000000000
+      internalID: 4138452317400232165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_16
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 561
+        width: 28
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c1ac65f4edcbcf00800000000000000
+      internalID: 1138229714094956993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_17
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 561
+        width: 28
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7d63d8cfd04c8fc0800000000000000
+      internalID: -3491344281227793028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_18
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 564
+        width: 33
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ef2632ff37d50b30800000000000000
+      internalID: 4253042092767850469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_19
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 588
+        width: 58
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fbe66b8f796a99b0800000000000000
+      internalID: -5072626033758901263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_20
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 535
+        width: 34
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53f69fb5f2b211870800000000000000
+      internalID: 8651743841561964341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_21
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 535
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d87ad2b94ad36aed0800000000000000
+      internalID: -2403165573968189555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_22
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 535
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a26d406ac478e04c0800000000000000
+      internalID: -4319366229329127894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_23
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 535
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f510bdbd4e7bf3cb0800000000000000
+      internalID: -4881981277477338785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_24
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 554
+        width: 58
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9b8bf1ab30932360800000000000000
+      internalID: 7143712019734825886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_25
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 482
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e7e9e6d2f40ef080800000000000000
+      internalID: -9151871951736018973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_26
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 485
+        width: 26
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a2cf7b30c14ffbf0800000000000000
+      internalID: -288439557240667482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_27
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 481
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23edd53a0d6566e70800000000000000
+      internalID: 9108062750497431090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_28
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 483
+        width: 44
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eda2f1be7bac07790800000000000000
+      internalID: -7534299285318325538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_29
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 485
+        width: 126
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c59ac88b461edc900800000000000000
+      internalID: 706468539276241244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_30
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 485
+        width: 40
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de5ed9955a3d5d7b0800000000000000
+      internalID: -5200017487602784787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_31
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 443
+        width: 44
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02e3d0a66d7370d20800000000000000
+      internalID: 3244623450585513504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_32
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 432
+        width: 66
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0856d0769e99cae0800000000000000
+      internalID: -1528516229540194289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_33
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 409
+        width: 194
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b84483ef1b5a1d60800000000000000
+      internalID: 7861696292047833269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_34
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 410
+        width: 44
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bce4667395317b460800000000000000
+      internalID: 7257290598433312459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_35
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 372
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca9571a3e4285e7c0800000000000000
+      internalID: -4042681818001483348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_36
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 357
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 038abd833062d27c0800000000000000
+      internalID: -4094574690929235920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_37
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 357
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f344ed761f0cb60800000000000000
+      internalID: 7764471185999675187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_38
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 324
+        width: 194
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8c6c7fc4d43b6110800000000000000
+      internalID: 1255155009771564174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_39
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 334
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eda87945124424760800000000000000
+      internalID: 7440584444313307870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_40
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 308
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a48b5fe53051021d0800000000000000
+      internalID: -3377676616305625014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Objetos da sala_41
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 308
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c2ee6b0aac6d4fe0800000000000000
+      internalID: -1203186047845997881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Objetos da sala_0: -6923928629211005104
+      Objetos da sala_1: -3861036745648108377
+      Objetos da sala_10: 4437018700462657410
+      Objetos da sala_11: 7135815486186494877
+      Objetos da sala_12: 6090767271219728812
+      Objetos da sala_13: 6874362806946424318
+      Objetos da sala_14: 6151027180911381329
+      Objetos da sala_15: 4138452317400232165
+      Objetos da sala_16: 1138229714094956993
+      Objetos da sala_17: -3491344281227793028
+      Objetos da sala_18: 4253042092767850469
+      Objetos da sala_19: -5072626033758901263
+      Objetos da sala_2: -7383802348175171211
+      Objetos da sala_20: 8651743841561964341
+      Objetos da sala_21: -2403165573968189555
+      Objetos da sala_22: -4319366229329127894
+      Objetos da sala_23: -4881981277477338785
+      Objetos da sala_24: 7143712019734825886
+      Objetos da sala_25: -9151871951736018973
+      Objetos da sala_26: -288439557240667482
+      Objetos da sala_27: 9108062750497431090
+      Objetos da sala_28: -7534299285318325538
+      Objetos da sala_29: 706468539276241244
+      Objetos da sala_3: 8939691824921640206
+      Objetos da sala_30: -5200017487602784787
+      Objetos da sala_31: 3244623450585513504
+      Objetos da sala_32: -1528516229540194289
+      Objetos da sala_33: 7861696292047833269
+      Objetos da sala_34: 7257290598433312459
+      Objetos da sala_35: -4042681818001483348
+      Objetos da sala_36: -4094574690929235920
+      Objetos da sala_37: 7764471185999675187
+      Objetos da sala_38: 1255155009771564174
+      Objetos da sala_39: 7440584444313307870
+      Objetos da sala_4: 1280143348651942701
+      Objetos da sala_40: -3377676616305625014
+      Objetos da sala_41: -1203186047845997881
+      Objetos da sala_5: -1878492587726191045
+      Objetos da sala_6: 7178484302732536945
+      Objetos da sala_7: -1393358570168164342
+      Objetos da sala_8: 6224314388720476784
+      Objetos da sala_9: -2503544394398726470
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
