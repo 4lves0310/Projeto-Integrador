@@ -17,6 +17,7 @@ public class MenuControll : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             menuCanvas.SetActive(!menuCanvas.activeSelf);
+            AudioSFX.Instance?.TocarMenu();
         }
     }
 }
