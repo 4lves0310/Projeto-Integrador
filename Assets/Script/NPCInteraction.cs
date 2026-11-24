@@ -80,13 +80,9 @@ public class NPCInteraction : MonoBehaviour
 
         SincronizarEstadoMissao();
 
-        if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status == StatusMissao.Disponivel)
+        if (darMissaoAoFinalizar && missaoParaEntregar != null)
         {
-            DefinirObjetosMissao(false);
-        }
-        else if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status != StatusMissao.Disponivel)
-        {
-            DefinirObjetosMissao(true);
+            DefinirObjetosMissao(missaoParaEntregar.status != StatusMissao.Disponivel);
         }
 
         AtualizarIconeMissao();
@@ -119,8 +115,7 @@ public class NPCInteraction : MonoBehaviour
                 if (c.gameObject.scene != SceneManager.GetActiveScene())
                     continue;
 
-                Transform[] filhos = c.GetComponentsInChildren<Transform>(true);
-                foreach (Transform t in filhos)
+                foreach (Transform t in c.GetComponentsInChildren<Transform>(true))
                 {
                     if (t.name.ToLower().Contains("dialogo") || t.name.ToLower().Contains("dialogue"))
                     {
@@ -128,16 +123,12 @@ public class NPCInteraction : MonoBehaviour
                         break;
                     }
                 }
-
-                if (painelDialogo != null)
-                    break;
+                if (painelDialogo != null) break;
             }
         }
 
         if (painelDialogo != null && textoDialogo == null)
-        {
             textoDialogo = painelDialogo.GetComponentInChildren<TMP_Text>(true);
-        }
 
         if (painelInteracao == null)
         {
@@ -147,8 +138,7 @@ public class NPCInteraction : MonoBehaviour
                 if (c.gameObject.scene != SceneManager.GetActiveScene())
                     continue;
 
-                Transform[] filhos = c.GetComponentsInChildren<Transform>(true);
-                foreach (Transform t in filhos)
+                foreach (Transform t in c.GetComponentsInChildren<Transform>(true))
                 {
                     if (t.name.ToLower().Contains("interacao") || t.name.ToLower().Contains("interact"))
                     {
@@ -156,17 +146,14 @@ public class NPCInteraction : MonoBehaviour
                         break;
                     }
                 }
-
-                if (painelInteracao != null)
-                    break;
+                if (painelInteracao != null) break;
             }
         }
     }
 
     private void AtivarHierarquia(GameObject alvo)
     {
-        if (alvo == null)
-            return;
+        if (alvo == null) return;
 
         Transform atual = alvo.transform;
         while (atual != null)
@@ -209,26 +196,29 @@ public class NPCInteraction : MonoBehaviour
         return !QuestManager.Instance.MissaoFoiConcluida(idMissaoAnteriorNecessaria);
     }
 
-    private bool ExigeItemParaAvancar()
+    private bool DeveChecarItemAgora()
     {
-        return avancarMissaoAoFinalizar && !string.IsNullOrWhiteSpace(itemIdNecessario);
+        if (!avancarMissaoAoFinalizar || string.IsNullOrWhiteSpace(itemIdNecessario))
+            return false;
+
+        if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status == StatusMissao.Disponivel)
+            return false;
+
+        return true;
     }
 
     private bool JogadorPossuiItemExigido()
     {
-        if (!ExigeItemParaAvancar())
+        if (!DeveChecarItemAgora())
             return true;
 
         if (verificadorInventario == null)
             verificadorInventario = FindFirstObjectByType<VerificadorInventario>();
 
         if (verificadorInventario == null)
-        {
-            Debug.LogWarning("VerificadorInventario nao encontrado na cena!");
             return false;
-        }
 
-        return verificadorInventario.TemItem(itemIdNecessario, quantidadeNecessaria);
+        return verificadorInventario.TemItem(itemIdNecessario, Mathf.Max(1, quantidadeNecessaria));
     }
 
     private void DefinirObjetosMissao(bool ativo)
@@ -281,8 +271,7 @@ public class NPCInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
-            return;
+        if (!other.CompareTag("Player")) return;
 
         jogadorPerto = true;
 
@@ -292,8 +281,7 @@ public class NPCInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
-            return;
+        if (!other.CompareTag("Player")) return;
 
         jogadorPerto = false;
 
@@ -303,7 +291,6 @@ public class NPCInteraction : MonoBehaviour
         if (dialogoAtivo)
         {
             dialogoAtivo = false;
-
             if (painelDialogo != null)
                 painelDialogo.SetActive(false);
         }
@@ -319,10 +306,14 @@ public class NPCInteraction : MonoBehaviour
         {
             falasAtuais = falasBloqueada;
         }
-        else if (ExigeItemParaAvancar() && !JogadorPossuiItemExigido())
+        else if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status == StatusMissao.Disponivel)
+        {
+            falasAtuais = falas;
+        }
+        else if (DeveChecarItemAgora() && !JogadorPossuiItemExigido())
         {
             bloqueadoPorFaltaDeItem = true;
-            falasAtuais = (falasFaltaItem != null && falasFaltaItem.Length > 0) ? falasFaltaItem : falas;
+            falasAtuais = (falasFaltaItem != null && falasFaltaItem.Length > 0) ? falasFaltaItem : falasEmAndamento;
         }
         else
         {
@@ -331,19 +322,15 @@ public class NPCInteraction : MonoBehaviour
             if (darMissaoAoFinalizar && missaoParaEntregar != null)
             {
                 if (missaoParaEntregar.status == StatusMissao.Concluida && falasConcluida != null && falasConcluida.Length > 0)
-                {
                     falasAtuais = falasConcluida;
-                }
                 else if (missaoParaEntregar.status == StatusMissao.EmAndamento && falasEmAndamento != null && falasEmAndamento.Length > 0)
-                {
                     falasAtuais = falasEmAndamento;
-                }
             }
         }
 
         if (falasAtuais == null || falasAtuais.Length == 0)
         {
-            Debug.LogWarning("Configure as falas do NPC.");
+            Debug.LogWarning("Configure as falas do NPC: " + gameObject.name);
             return;
         }
 
@@ -420,8 +407,28 @@ public class NPCInteraction : MonoBehaviour
             return;
         }
 
-        // --- VERIFICA E CONSOME O ITEM DA MISSAO ---
-        if (ExigeItemParaAvancar())
+        if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status == StatusMissao.Disponivel)
+        {
+            if (missaoParaEntregar.progressoNecessario <= 0)
+                missaoParaEntregar.progressoNecessario = 1;
+
+            if (QuestManager.Instance != null)
+            {
+                QuestManager.Instance.AceitarMissao(missaoParaEntregar);
+                DefinirObjetosMissao(true);
+                AtualizarIconeMissao();
+            }
+            else
+            {
+                Debug.LogWarning("QuestManager nao encontrado na cena!");
+            }
+
+            if (painelInteracao != null && jogadorPerto)
+                painelInteracao.SetActive(true);
+            return;
+        }
+
+        if (DeveChecarItemAgora())
         {
             if (verificadorInventario == null)
                 verificadorInventario = FindFirstObjectByType<VerificadorInventario>();
@@ -429,11 +436,10 @@ public class NPCInteraction : MonoBehaviour
             if (consumirItemAoEntregar)
             {
                 bool consumiu = verificadorInventario != null &&
-                                verificadorInventario.ConsumirItem(itemIdNecessario, quantidadeNecessaria);
+                                verificadorInventario.ConsumirItem(itemIdNecessario, Mathf.Max(1, quantidadeNecessaria));
 
                 if (!consumiu)
                 {
-                    Debug.LogWarning("Nao foi possivel consumir o item: " + itemIdNecessario);
                     if (painelInteracao != null && jogadorPerto)
                         painelInteracao.SetActive(true);
                     return;
@@ -446,53 +452,33 @@ public class NPCInteraction : MonoBehaviour
                 return;
             }
         }
-        // ------------------------------------------
 
         if (itemRecompensa != null && !recompensaEntregue)
         {
             if (inventario == null)
-            {
-                Debug.LogWarning("Configure o inventario do NPC.");
-                return;
-            }
+                inventario = FindFirstObjectByType<InventoryController>();
 
-            bool recebeu = inventario.AddItemToInventory(
-                itemRecompensa, quantidadeItem);
-
-            if (!recebeu)
+            if (inventario != null)
             {
-                dialogoAtivo = true;
-                if (painelDialogo != null)
+                bool recebeu = inventario.AddItemToInventory(itemRecompensa, quantidadeItem);
+                if (!recebeu)
                 {
-                    AtivarHierarquia(painelDialogo);
-                    painelDialogo.SetActive(true);
+                    dialogoAtivo = true;
+                    if (painelDialogo != null)
+                    {
+                        AtivarHierarquia(painelDialogo);
+                        painelDialogo.SetActive(true);
+                    }
+                    if (textoDialogo != null)
+                        textoDialogo.text = "Inventario cheio! Libere espaco e pressione E.";
+
+                    indiceFala = falasAtuais.Length;
+                    return;
                 }
 
-                if (textoDialogo != null)
-                {
-                    textoDialogo.text =
-                        "Inventario cheio ou item invalido! " +
-                        "Libere espaco e pressione E para tentar novamente.";
-                }
-
-                indiceFala = falasAtuais.Length;
-                return;
+                recompensaEntregue = true;
+                AudioSFX.Instance?.TocarColetar();
             }
-
-            recompensaEntregue = true;
-            AudioSFX.Instance?.TocarColetar();
-            Debug.Log("Item recebido: " + itemRecompensa.name);
-        }
-
-        if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status == StatusMissao.Disponivel)
-        {
-            if (QuestManager.Instance != null)
-            {
-                QuestManager.Instance.AceitarMissao(missaoParaEntregar);
-                DefinirObjetosMissao(true);
-            }
-            else
-                Debug.LogWarning("QuestManager nao encontrado na cena!");
         }
 
         if (avancarMissaoAoFinalizar && !string.IsNullOrWhiteSpace(idAlvoMissao))
@@ -503,23 +489,16 @@ public class NPCInteraction : MonoBehaviour
 
         if (trocarCenaAoFinalizar)
         {
-            if (string.IsNullOrWhiteSpace(nomeCenaDestino))
+            if (!string.IsNullOrWhiteSpace(nomeCenaDestino))
             {
-                Debug.LogWarning("Configure o nome da cena de destino.");
-                if (painelInteracao != null && jogadorPerto)
-                    painelInteracao.SetActive(true);
+                AudioSFX.Instance?.TocarTrocarCena();
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(nomeCenaDestino);
                 return;
             }
-
-            AudioSFX.Instance?.TocarTrocarCena();
-            Time.timeScale = 1f;
-            SceneManager.LoadScene(nomeCenaDestino);
-            return;
         }
 
         if (painelInteracao != null && jogadorPerto)
             painelInteracao.SetActive(true);
-
-        Debug.Log("Dialogo concluido!");
     }
 }
