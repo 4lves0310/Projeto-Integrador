@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; // Necess�rio para controlar componentes Image da UI
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -12,30 +12,39 @@ public class NPCInteraction : MonoBehaviour
     [Header("Dialogo")]
     public GameObject painelDialogo;
     public TMP_Text textoDialogo;
-    public Image imagemRetratoUI;      // Arraste aqui o objeto Image da UI onde aparece a foto
-    public Sprite spriteRetratoNPC;    // Arraste aqui o Sprite (rosto/arte) deste NPC
+    public Image imagemRetratoUI;
+    public Sprite spriteRetratoNPC;
 
     [TextArea(2, 5)]
     public string[] falasBloqueada;
 
     [TextArea(2, 5)]
-    public string[] falas; // Falas iniciais (missao disponivel)
+    public string[] falas;
 
     [TextArea(2, 5)]
-    public string[] falasEmAndamento; // Falas enquanto faz a missao
+    public string[] falasEmAndamento;
 
     [TextArea(2, 5)]
-    public string[] falasConcluida; // Falas apos concluir a missao
+    public string[] falasFaltaItem;
+
+    [TextArea(2, 5)]
+    public string[] falasConcluida;
 
     [Header("Missao")]
     public string idMissaoAnteriorNecessaria;
     public bool darMissaoAoFinalizar = false;
     public Missao missaoParaEntregar;
-    public GameObject[] objetosParaAtivar; // Objetos escondidos no Start e ativados ao aceitar a missao
+    public GameObject[] objetosParaAtivar;
 
     [Space(5)]
     public bool avancarMissaoAoFinalizar = false;
     public string idAlvoMissao;
+
+    [Header("Entrega de Item na Missao (Opcional)")]
+    public VerificadorInventario verificadorInventario;
+    public string itemIdNecessario;
+    public int quantidadeNecessaria = 1;
+    public bool consumirItemAoEntregar = true;
 
     [Header("Icone em cima do NPC")]
     public SpriteRenderer iconeMissao;
@@ -55,6 +64,7 @@ public class NPCInteraction : MonoBehaviour
     private bool jogadorPerto;
     private bool dialogoAtivo;
     private bool recompensaEntregue;
+    private bool bloqueadoPorFaltaDeItem;
     private int indiceFala;
     private string[] falasAtuais;
 
@@ -199,6 +209,28 @@ public class NPCInteraction : MonoBehaviour
         return !QuestManager.Instance.MissaoFoiConcluida(idMissaoAnteriorNecessaria);
     }
 
+    private bool ExigeItemParaAvancar()
+    {
+        return avancarMissaoAoFinalizar && !string.IsNullOrWhiteSpace(itemIdNecessario);
+    }
+
+    private bool JogadorPossuiItemExigido()
+    {
+        if (!ExigeItemParaAvancar())
+            return true;
+
+        if (verificadorInventario == null)
+            verificadorInventario = FindFirstObjectByType<VerificadorInventario>();
+
+        if (verificadorInventario == null)
+        {
+            Debug.LogWarning("VerificadorInventario nao encontrado na cena!");
+            return false;
+        }
+
+        return verificadorInventario.TemItem(itemIdNecessario, quantidadeNecessaria);
+    }
+
     private void DefinirObjetosMissao(bool ativo)
     {
         if (objetosParaAtivar == null) return;
@@ -281,10 +313,16 @@ public class NPCInteraction : MonoBehaviour
     {
         GarantirReferenciasUI();
         SincronizarEstadoMissao();
+        bloqueadoPorFaltaDeItem = false;
 
         if (EstaBloqueado())
         {
             falasAtuais = falasBloqueada;
+        }
+        else if (ExigeItemParaAvancar() && !JogadorPossuiItemExigido())
+        {
+            bloqueadoPorFaltaDeItem = true;
+            falasAtuais = (falasFaltaItem != null && falasFaltaItem.Length > 0) ? falasFaltaItem : falas;
         }
         else
         {
@@ -312,6 +350,7 @@ public class NPCInteraction : MonoBehaviour
         dialogoAtivo = true;
         indiceFala = 0;
 
+        AtualizarRetratoUI();
         AudioSFX.Instance?.TocarInteragir();
 
         if (painelInteracao != null)
@@ -326,7 +365,6 @@ public class NPCInteraction : MonoBehaviour
         AtualizarTexto();
     }
 
-    // M�todo p�blico caso voc� queira trocar o sprite por outro script ou evento
     public void AtualizarRetratoUI()
     {
         if (imagemRetratoUI == null) return;
@@ -338,7 +376,6 @@ public class NPCInteraction : MonoBehaviour
         }
         else
         {
-            // Se voc� n�o colocar nenhum sprite nesse NPC, a imagem fica oculta
             imagemRetratoUI.enabled = false;
         }
     }
@@ -376,12 +413,40 @@ public class NPCInteraction : MonoBehaviour
         if (painelDialogo != null)
             painelDialogo.SetActive(false);
 
-        if (EstaBloqueado())
+        if (EstaBloqueado() || bloqueadoPorFaltaDeItem)
         {
             if (painelInteracao != null && jogadorPerto)
                 painelInteracao.SetActive(true);
             return;
         }
+
+        // --- VERIFICA E CONSOME O ITEM DA MISSAO ---
+        if (ExigeItemParaAvancar())
+        {
+            if (verificadorInventario == null)
+                verificadorInventario = FindFirstObjectByType<VerificadorInventario>();
+
+            if (consumirItemAoEntregar)
+            {
+                bool consumiu = verificadorInventario != null &&
+                                verificadorInventario.ConsumirItem(itemIdNecessario, quantidadeNecessaria);
+
+                if (!consumiu)
+                {
+                    Debug.LogWarning("Nao foi possivel consumir o item: " + itemIdNecessario);
+                    if (painelInteracao != null && jogadorPerto)
+                        painelInteracao.SetActive(true);
+                    return;
+                }
+            }
+            else if (!JogadorPossuiItemExigido())
+            {
+                if (painelInteracao != null && jogadorPerto)
+                    painelInteracao.SetActive(true);
+                return;
+            }
+        }
+        // ------------------------------------------
 
         if (itemRecompensa != null && !recompensaEntregue)
         {
