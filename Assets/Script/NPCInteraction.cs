@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI; // Necessário para controlar componentes Image da UI
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -11,24 +12,26 @@ public class NPCInteraction : MonoBehaviour
     [Header("Dialogo")]
     public GameObject painelDialogo;
     public TMP_Text textoDialogo;
+    public Image imagemRetratoUI;      // Arraste aqui o objeto Image da UI onde aparece a foto
+    public Sprite spriteRetratoNPC;    // Arraste aqui o Sprite (rosto/arte) deste NPC
 
     [TextArea(2, 5)]
     public string[] falasBloqueada; // Falas se o jogador falar antes da hora
 
     [TextArea(2, 5)]
-    public string[] falas;
+    public string[] falas; // Falas iniciais (missao disponivel)
 
     [TextArea(2, 5)]
-    public string[] falasEmAndamento;
+    public string[] falasEmAndamento; // Falas enquanto faz a missao
 
     [TextArea(2, 5)]
-    public string[] falasConcluida;
+    public string[] falasConcluida; // Falas apos concluir a missao
 
     [Header("Missao")]
     public string idMissaoAnteriorNecessaria; // Deixe vazio no 1º NPC
     public bool darMissaoAoFinalizar = false;
     public Missao missaoParaEntregar;
-    public GameObject[] objetosParaAtivar;
+    public GameObject[] objetosParaAtivar; // Objetos escondidos no Start e ativados ao aceitar a missao
 
     [Space(5)]
     public bool avancarMissaoAoFinalizar = false;
@@ -114,7 +117,6 @@ public class NPCInteraction : MonoBehaviour
         if (iconeMissao == null || !darMissaoAoFinalizar || missaoParaEntregar == null)
             return;
 
-        // Esconde o icone enquanto o NPC estiver bloqueado
         if (EstaBloqueado())
         {
             iconeMissao.enabled = false;
@@ -209,6 +211,9 @@ public class NPCInteraction : MonoBehaviour
         dialogoAtivo = true;
         indiceFala = 0;
 
+        // Troca a imagem do retrato na UI antes de abrir o painel
+        AtualizarRetratoUI();
+
         if (painelInteracao != null)
             painelInteracao.SetActive(false);
 
@@ -216,6 +221,23 @@ public class NPCInteraction : MonoBehaviour
             painelDialogo.SetActive(true);
 
         AtualizarTexto();
+    }
+
+    // Método público caso você queira trocar o sprite por outro script ou evento
+    public void AtualizarRetratoUI()
+    {
+        if (imagemRetratoUI == null) return;
+
+        if (spriteRetratoNPC != null)
+        {
+            imagemRetratoUI.sprite = spriteRetratoNPC;
+            imagemRetratoUI.enabled = true;
+        }
+        else
+        {
+            // Se você não colocar nenhum sprite nesse NPC, a imagem fica oculta
+            imagemRetratoUI.enabled = false;
+        }
     }
 
     private void ProximaFala()
@@ -241,7 +263,6 @@ public class NPCInteraction : MonoBehaviour
         if (painelDialogo != null)
             painelDialogo.SetActive(false);
 
-        // Se estava bloqueado, apenas fecha o dialogo e nao entrega nada
         if (EstaBloqueado())
         {
             if (painelInteracao != null && jogadorPerto)

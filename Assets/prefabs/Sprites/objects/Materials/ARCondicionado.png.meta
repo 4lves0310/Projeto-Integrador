@@ -180,7 +180,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ARCondicionado_0: 3041699790505475733
+      ARCondicionado_1: 6677246119956408465
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
