@@ -50,6 +50,7 @@ public class QuestManager : MonoBehaviour
         if (textoMissaoConcluida != null) textoMissaoConcluida.SetActive(false);
         if (objetoDaBarra != null) objetoDaBarra.SetActive(true);
 
+        AudioSFX.Instance?.TocarMissaoAtualizada();
         AtualizarVisualDaBarra();
         Debug.Log("Missao aceita: " + missaoAtual.idMissao + " | Alvo esperado: '" + missaoAtual.idAlvo + "'");
     }
@@ -78,13 +79,14 @@ public class QuestManager : MonoBehaviour
         }
         else
         {
+            AudioSFX.Instance?.TocarMissaoAtualizada();
             AtualizarVisualDaBarra();
         }
     }
 
     private void AtualizarVisualDaBarra()
     {
-        if (spritesDaBarra.Length == 0 || imagemDaBarra == null) return;
+        if (spritesDaBarra.Length == 0 || imagemDaBarra == null || missaoAtual == null) return;
 
         if (missaoAtual.progressoNecessario <= 0)
         {
@@ -101,13 +103,17 @@ public class QuestManager : MonoBehaviour
 
     private void CompletarMissao()
     {
-        missaoAtual.status = StatusMissao.Concluida;
+        if (missaoAtual != null)
+        {
+            missaoAtual.status = StatusMissao.Concluida;
 
-        if (!missoesConcluidas.Contains(missaoAtual.idMissao))
-            missoesConcluidas.Add(missaoAtual.idMissao);
+            if (!string.IsNullOrWhiteSpace(missaoAtual.idMissao) && !missoesConcluidas.Contains(missaoAtual.idMissao))
+                missoesConcluidas.Add(missaoAtual.idMissao);
 
-        Debug.Log("Missao concluida: " + missaoAtual.idMissao);
+            Debug.Log("Missao concluida: " + missaoAtual.idMissao);
+        }
 
+        AudioSFX.Instance?.TocarMissaoConcluida();
         SubirDeNivel();
 
         if (textoMissaoConcluida != null)
@@ -132,5 +138,67 @@ public class QuestManager : MonoBehaviour
     {
         if (objetoDaBarra != null) objetoDaBarra.SetActive(false);
         if (textoMissaoConcluida != null) textoMissaoConcluida.SetActive(false);
+    }
+
+    public ActiveQuestSaveData ExportarMissaoAtual()
+    {
+        if (missaoAtual == null || string.IsNullOrWhiteSpace(missaoAtual.idMissao))
+            return null;
+
+        return new ActiveQuestSaveData
+        {
+            idMissao = missaoAtual.idMissao,
+            tipo = missaoAtual.tipo,
+            idAlvo = missaoAtual.idAlvo,
+            progressoAtual = missaoAtual.progressoAtual,
+            progressoNecessario = missaoAtual.progressoNecessario,
+            status = missaoAtual.status
+        };
+    }
+
+    public void RestaurarEstado(int nivel, List<string> concluidas, ActiveQuestSaveData ativa)
+    {
+        CancelInvoke("EsconderUI");
+
+        nivelAtual = nivel > 0 ? nivel : 1;
+
+        missoesConcluidas.Clear();
+        if (concluidas != null)
+        {
+            foreach (string id in concluidas)
+            {
+                if (!string.IsNullOrWhiteSpace(id) && !missoesConcluidas.Contains(id))
+                    missoesConcluidas.Add(id);
+            }
+        }
+
+        if (ativa != null && !string.IsNullOrWhiteSpace(ativa.idMissao))
+        {
+            missaoAtual = new Missao(ativa.idMissao, ativa.tipo, ativa.idAlvo, ativa.progressoNecessario)
+            {
+                progressoAtual = ativa.progressoAtual,
+                status = ativa.status
+            };
+
+            if (missaoAtual.status == StatusMissao.EmAndamento)
+            {
+                if (textoMissaoConcluida != null) textoMissaoConcluida.SetActive(false);
+                if (objetoDaBarra != null) objetoDaBarra.SetActive(true);
+                AtualizarVisualDaBarra();
+            }
+            else
+            {
+                if (objetoDaBarra != null) objetoDaBarra.SetActive(false);
+                if (textoMissaoConcluida != null) textoMissaoConcluida.SetActive(false);
+            }
+        }
+        else
+        {
+            missaoAtual = null;
+            if (objetoDaBarra != null) objetoDaBarra.SetActive(false);
+            if (textoMissaoConcluida != null) textoMissaoConcluida.SetActive(false);
+        }
+
+        AtualizarTextoNivel();
     }
 }

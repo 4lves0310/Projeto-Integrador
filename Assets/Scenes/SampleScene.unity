@@ -795,6 +795,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8.5
+  passoAudioSource: {fileID: 0}
+  sonsDePasso: []
+  intervaloPasso: 0.35
+  volumePasso: 0.7
 --- !u!114 &393811171
 MonoBehaviour:
   m_ObjectHideFlags: 0

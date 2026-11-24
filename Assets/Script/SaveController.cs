@@ -1,5 +1,5 @@
-
 using System;
+using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
@@ -112,6 +112,7 @@ public class SaveController : MonoBehaviour
             return;
         }
 
+        ItemColetavel.ColetadosNaSessao.Clear();
         SaveLoadOperation.Begin(firstSceneName, null);
     }
 
@@ -142,6 +143,7 @@ public class SaveController : MonoBehaviour
                 );
             }
 
+            AplicarColetadosAntesDaCena(data);
             SaveLoadOperation.Begin(sceneName, data);
         }
         catch (Exception error)
@@ -171,6 +173,7 @@ public class SaveController : MonoBehaviour
                 File.Delete(temporary);
             }
 
+            ItemColetavel.ColetadosNaSessao.Clear();
             Report("Save excluído!");
             UpdateInterface(lastStatus);
         }
@@ -249,7 +252,6 @@ public class SaveController : MonoBehaviour
             throw new InvalidDataException("Posição inválida no save.");
         }
 
-        // Compatibilidade com saves antigos sem inventário.
         if (!json.Contains("\"items\""))
         {
             data.items = null;
@@ -257,6 +259,21 @@ public class SaveController : MonoBehaviour
         else if (data.items == null)
         {
             throw new InvalidDataException("Inventário inválido no save.");
+        }
+
+        if (data.collectedItems == null)
+        {
+            data.collectedItems = new List<string>();
+        }
+
+        if (data.completedQuests == null)
+        {
+            data.completedQuests = new List<string>();
+        }
+
+        if (data.questLevel <= 0)
+        {
+            data.questLevel = 1;
         }
 
         return data;
@@ -289,7 +306,6 @@ public class SaveController : MonoBehaviour
                 FindObjectsSortMode.None
             );
 
-        // Procura primeiro na cena ativa.
         foreach (InventoryController inventory in inventories)
         {
             if (inventory != null &&
@@ -300,7 +316,6 @@ public class SaveController : MonoBehaviour
             }
         }
 
-        // Procura em outras cenas, inclusive objetos persistentes.
         foreach (InventoryController inventory in inventories)
         {
             if (inventory != null && inventory.isActiveAndEnabled)
@@ -315,17 +330,54 @@ public class SaveController : MonoBehaviour
         );
     }
 
+    private static QuestManager FindQuestManager()
+    {
+        if (QuestManager.Instance != null)
+            return QuestManager.Instance;
+
+        QuestManager[] managers = UnityEngine.Object.FindObjectsByType<QuestManager>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+
+        foreach (QuestManager manager in managers)
+        {
+            if (manager != null)
+                return manager;
+        }
+
+        return null;
+    }
+
+    private static void AplicarColetadosAntesDaCena(SaveData data)
+    {
+        ItemColetavel.ColetadosNaSessao.Clear();
+        if (data == null || data.collectedItems == null)
+            return;
+
+        foreach (string id in data.collectedItems)
+        {
+            if (!string.IsNullOrWhiteSpace(id))
+                ItemColetavel.ColetadosNaSessao.Add(id.Trim());
+        }
+    }
+
     internal static void CaptureAndWrite()
     {
         GameObject player = FindPlayer();
         InventoryController inventory = FindInventory();
+        QuestManager questManager = FindQuestManager();
 
         SaveData data = new SaveData
         {
             playerPosition = player.transform.position,
             sceneName = SceneManager.GetActiveScene().name,
             mapBoundary = "",
-            items = inventory.GetInventoryData()
+            items = inventory.GetInventoryData(),
+            collectedItems = new List<string>(ItemColetavel.ColetadosNaSessao),
+            questLevel = questManager != null ? questManager.nivelAtual : 1,
+            completedQuests = questManager != null ? new List<string>(questManager.missoesConcluidas) : new List<string>(),
+            activeQuest = questManager != null ? questManager.ExportarMissaoAtual() : null
         };
 
         string temporary = SaveLocation + ".tmp";
@@ -347,14 +399,36 @@ public class SaveController : MonoBehaviour
 
     internal static void Restore(SaveData data)
     {
+        AplicarColetadosAntesDaCena(data);
+
         GameObject player = FindPlayer();
         InventoryController inventory = FindInventory();
+        QuestManager questManager = FindQuestManager();
 
         inventory.InitializeInventory();
 
         if (data.items != null)
         {
             inventory.LoadInventoryData(data.items);
+        }
+
+        if (questManager != null)
+        {
+            questManager.RestaurarEstado(data.questLevel, data.completedQuests, data.activeQuest);
+        }
+
+        ItemColetavel[] coletaveisNaCena = UnityEngine.Object.FindObjectsByType<ItemColetavel>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+
+        foreach (ItemColetavel coletavel in coletaveisNaCena)
+        {
+            if (coletavel != null && coletavel.JaFoiColetado())
+            {
+                coletavel.gameObject.SetActive(false);
+                Destroy(coletavel.gameObject);
+            }
         }
 
         player.transform.position = data.playerPosition;

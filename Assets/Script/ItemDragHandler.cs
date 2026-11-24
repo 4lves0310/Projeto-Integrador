@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    Transform originalParent;
-    CanvasGroup canvasGroup;
+    private Transform originalParent;
+    private CanvasGroup canvasGroup;
 
-    // Start is called before the first frame update
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -16,39 +13,35 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        originalParent = transform.parent; // Save OG parent
-        transform.SetParent(transform.root); // Above other canvas
+        originalParent = transform.parent;
+        transform.SetParent(transform.root);
         canvasGroup.blocksRaycasts = false;
-        canvasGroup.alpha = 0.6f; // Semi-transparent during drag
+        canvasGroup.alpha = 0.6f;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position; // Follow the mouse
+        transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true; // Enables raycasts
-        canvasGroup.alpha = 1f; // No longer transparent
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.alpha = 1f;
 
-        Slot dropSlot = eventData.pointerEnter?.GetComponent<Slot>(); //Slot where item dropped
-        if (dropSlot == null)
+        Slot dropSlot = eventData.pointerEnter?.GetComponent<Slot>();
+        if (dropSlot == null && eventData.pointerEnter != null)
         {
-            GameObject dropItem = eventData.pointerEnter;
-            if (dropItem != null)
-            {
-                dropSlot = dropItem.GetComponentInParent<Slot>();
-            }
+            dropSlot = eventData.pointerEnter.GetComponentInParent<Slot>();
         }
+
         Slot originalSlot = originalParent.GetComponent<Slot>();
 
         if (dropSlot != null)
         {
-            // Is a slot under drop point
+            // Soltou em cima de um slot: troca ou move normalmente
             if (dropSlot.currentItem != null)
             {
-                // Slot has an item - swap items
                 dropSlot.currentItem.transform.SetParent(originalSlot.transform);
                 originalSlot.currentItem = dropSlot.currentItem;
                 dropSlot.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
@@ -58,16 +51,51 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 originalSlot.currentItem = null;
             }
 
-            // Move item into drop slot
             transform.SetParent(dropSlot.transform);
             dropSlot.currentItem = gameObject;
+            GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         }
         else
         {
-            // No slot under drop point
+            // Soltou fora de qualquer slot: tenta dropar no chão
+            if (TentarDroparNoChao(originalSlot))
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            // Se não tiver prefabNoChao configurado ou não achar o Player, devolve pro slot
             transform.SetParent(originalParent);
+            GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        }
+    }
+
+    private bool TentarDroparNoChao(Slot originalSlot)
+    {
+        ItemData data = GetComponent<ItemData>();
+        if (data == null || data.prefabNoChao == null)
+            return false;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+            return false;
+
+        // Nasce um pouco abaixo do Player para não coletar no mesmo milissegundo se for coleta automática
+        Vector3 posicaoDrop = player.transform.position + new Vector3(0f, -0.8f, 0f);
+        GameObject dropObj = Instantiate(data.prefabNoChao, posicaoDrop, Quaternion.identity);
+
+        ItemColetavel coletavel = dropObj.GetComponent<ItemColetavel>();
+        if (coletavel != null)
+        {
+            coletavel.quantidade = data.quantity;
         }
 
-        GetComponent<RectTransform>().anchoredPosition = Vector2.zero; // Center
+        if (originalSlot != null)
+        {
+            originalSlot.currentItem = null;
+        }
+
+        AudioSFX.Instance?.TocarClique();
+        return true;
     }
 }

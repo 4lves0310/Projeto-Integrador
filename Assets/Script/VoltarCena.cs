@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +8,7 @@ public class VoltarCena : MonoBehaviour
     public void Voltar()
     {
         Time.timeScale = 1f;
+        AudioSFX.Instance?.TocarTrocarCena();
 
         if (string.IsNullOrEmpty(cenaAnterior))
         {
@@ -27,6 +27,7 @@ public class VoltarCena : MonoBehaviour
         cenaAnterior = SceneManager.GetActiveScene().name;
 
         Time.timeScale = 1f;
+        AudioSFX.Instance?.TocarTrocarCena();
         SceneManager.LoadScene(nomeCena);
     }
 }

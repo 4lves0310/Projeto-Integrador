@@ -112,7 +112,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bf9b97422d94a9fb1795d5014a49f7f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   itemId: hamburguer
   quantity: 1
+  prefabNoChao: {fileID: 1007086175385697203, guid: d109cf3e234b1d0408f006f3b8f7ba4e, type: 3}

@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Necessário para gerenciar cenas
+using UnityEngine.SceneManagement;
 
 public class TrocaCenaAoEncostar : MonoBehaviour
 {
@@ -9,7 +9,6 @@ public class TrocaCenaAoEncostar : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Garante que apenas o Player ativa a troca de cena
         if (collision.CompareTag("Player"))
         {
             CarregarCena();
@@ -20,6 +19,7 @@ public class TrocaCenaAoEncostar : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(nomeDaCena))
         {
+            AudioSFX.Instance?.TocarTrocarCena();
             SceneManager.LoadScene(nomeDaCena);
         }
         else
