@@ -4,24 +4,22 @@ using UnityEngine.SceneManagement;
 public class TrocarCenaPorta : MonoBehaviour
 {
     [Header("Configurações de Cena")]
-    public string nomeDaNovaCena; // Digite o nome exato da nova cena no Inspector
+    public string nomeDaNovaCena;
 
     [Header("Interface")]
-    public GameObject iconeInteracao; // O texto ou imagem de "Aperte E"
+    public GameObject iconeInteracao;
     public KeyCode teclaInteracao = KeyCode.E;
 
     private bool jogadorPerto = false;
 
     void Start()
     {
-        // Garante que o ícone comece invisível ao iniciar o jogo
         if (iconeInteracao != null)
             iconeInteracao.SetActive(false);
     }
 
     void Update()
     {
-        // Se o jogador estiver perto e apertar a tecla configurada (E)
         if (jogadorPerto && Input.GetKeyDown(teclaInteracao))
         {
             CarregarNovaCena();
@@ -30,7 +28,6 @@ public class TrocarCenaPorta : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Quando algo entra na área verde, verifica se tem a tag Player
         if (collision.CompareTag("Player"))
         {
             jogadorPerto = true;
@@ -41,7 +38,6 @@ public class TrocarCenaPorta : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // Quando o jogador sai da área verde
         if (collision.CompareTag("Player"))
         {
             jogadorPerto = false;
@@ -54,6 +50,7 @@ public class TrocarCenaPorta : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(nomeDaNovaCena))
         {
+            AudioSFX.Instance?.TocarTrocarCena();
             SceneManager.LoadScene(nomeDaNovaCena);
         }
         else

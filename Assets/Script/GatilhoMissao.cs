@@ -60,6 +60,8 @@ public class GatilhoMissao : MonoBehaviour
         if (painelInteracao != null)
             painelInteracao.SetActive(false);
 
+        AudioSFX.Instance?.TocarInteragir();
+
         if (QuestManager.Instance != null)
             QuestManager.Instance.AtualizarProgresso(idAlvo, quantidade);
         else

@@ -30,9 +30,14 @@ public class DialogueManager : MonoBehaviour
     {
         currentLineIndex++;
         if (currentLineIndex < currentLines.Length)
+        {
+            AudioSFX.Instance?.TocarInteragir();
             ShowLine();
+        }
         else
+        {
             EndDialogue();
+        }
     }
 
     private void ShowLine()
@@ -57,6 +62,10 @@ public class DialogueManager : MonoBehaviour
         {
             // Revela uma letra de cada vez
             dialogueText.maxVisibleCharacters = i;
+
+            if (i % 2 == 0)
+                AudioSFX.Instance?.TocarLetra();
+
             yield return new WaitForSeconds(0.02f);
         }
     }

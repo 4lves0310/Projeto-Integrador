@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Necessário para gerir o carregamento de cenas
+using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
@@ -7,13 +7,13 @@ public class SceneController : MonoBehaviour
     [Tooltip("Digita aqui o nome exato da cena do teu jogo (ex: Nivel1, Jogo, Scene2)")]
     public string nomeDaCenaDoJogo = "Nivel1";
 
-    // Função pública para ser chamada pelo OnClick() do Botão
     public void IniciarJogo()
     {
         Debug.Log("A tentar carregar a cena: " + nomeDaCenaDoJogo);
 
         if (!string.IsNullOrEmpty(nomeDaCenaDoJogo))
         {
+            AudioSFX.Instance?.TocarTrocarCena();
             SceneManager.LoadScene(nomeDaCenaDoJogo);
         }
         else

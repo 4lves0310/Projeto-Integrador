@@ -13,7 +13,7 @@ public class NPCInteraction : MonoBehaviour
     public TMP_Text textoDialogo;
 
     [TextArea(2, 5)]
-    public string[] falasBloqueada; // Falas se o jogador falar antes da hora
+    public string[] falasBloqueada;
 
     [TextArea(2, 5)]
     public string[] falas;
@@ -25,7 +25,7 @@ public class NPCInteraction : MonoBehaviour
     public string[] falasConcluida;
 
     [Header("Missao")]
-    public string idMissaoAnteriorNecessaria; // Deixe vazio no 1º NPC
+    public string idMissaoAnteriorNecessaria;
     public bool darMissaoAoFinalizar = false;
     public Missao missaoParaEntregar;
     public GameObject[] objetosParaAtivar;
@@ -57,15 +57,23 @@ public class NPCInteraction : MonoBehaviour
 
     void Start()
     {
+        GarantirReferenciasUI();
+
         if (painelInteracao != null)
             painelInteracao.SetActive(false);
 
         if (painelDialogo != null)
             painelDialogo.SetActive(false);
 
+        SincronizarEstadoMissao();
+
         if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status == StatusMissao.Disponivel)
         {
             DefinirObjetosMissao(false);
+        }
+        else if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status != StatusMissao.Disponivel)
+        {
+            DefinirObjetosMissao(true);
         }
 
         AtualizarIconeMissao();
@@ -73,6 +81,7 @@ public class NPCInteraction : MonoBehaviour
 
     void Update()
     {
+        SincronizarEstadoMissao();
         AtualizarIconeMissao();
 
         if (!jogadorPerto)
@@ -84,6 +93,95 @@ public class NPCInteraction : MonoBehaviour
                 IniciarDialogo();
             else
                 ProximaFala();
+        }
+    }
+
+    private void GarantirReferenciasUI()
+    {
+        if (painelDialogo == null)
+        {
+            Canvas[] canvases = FindObjectsByType<Canvas>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (Canvas c in canvases)
+            {
+                if (c.gameObject.scene != SceneManager.GetActiveScene())
+                    continue;
+
+                Transform[] filhos = c.GetComponentsInChildren<Transform>(true);
+                foreach (Transform t in filhos)
+                {
+                    if (t.name.ToLower().Contains("dialogo") || t.name.ToLower().Contains("dialogue"))
+                    {
+                        painelDialogo = t.gameObject;
+                        break;
+                    }
+                }
+
+                if (painelDialogo != null)
+                    break;
+            }
+        }
+
+        if (painelDialogo != null && textoDialogo == null)
+        {
+            textoDialogo = painelDialogo.GetComponentInChildren<TMP_Text>(true);
+        }
+
+        if (painelInteracao == null)
+        {
+            Canvas[] canvases = FindObjectsByType<Canvas>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (Canvas c in canvases)
+            {
+                if (c.gameObject.scene != SceneManager.GetActiveScene())
+                    continue;
+
+                Transform[] filhos = c.GetComponentsInChildren<Transform>(true);
+                foreach (Transform t in filhos)
+                {
+                    if (t.name.ToLower().Contains("interacao") || t.name.ToLower().Contains("interact"))
+                    {
+                        painelInteracao = t.gameObject;
+                        break;
+                    }
+                }
+
+                if (painelInteracao != null)
+                    break;
+            }
+        }
+    }
+
+    private void AtivarHierarquia(GameObject alvo)
+    {
+        if (alvo == null)
+            return;
+
+        Transform atual = alvo.transform;
+        while (atual != null)
+        {
+            if (!atual.gameObject.activeSelf)
+                atual.gameObject.SetActive(true);
+            atual = atual.parent;
+        }
+    }
+
+    private void SincronizarEstadoMissao()
+    {
+        if (!darMissaoAoFinalizar || missaoParaEntregar == null || string.IsNullOrWhiteSpace(missaoParaEntregar.idMissao))
+            return;
+
+        if (QuestManager.Instance == null)
+            return;
+
+        if (QuestManager.Instance.MissaoFoiConcluida(missaoParaEntregar.idMissao))
+        {
+            missaoParaEntregar.status = StatusMissao.Concluida;
+            if (QuestManager.Instance.missaoAtual != null && QuestManager.Instance.missaoAtual.idMissao == missaoParaEntregar.idMissao)
+                missaoParaEntregar.progressoAtual = QuestManager.Instance.missaoAtual.progressoAtual;
+        }
+        else if (QuestManager.Instance.missaoAtual != null && QuestManager.Instance.missaoAtual.idMissao == missaoParaEntregar.idMissao)
+        {
+            missaoParaEntregar.status = QuestManager.Instance.missaoAtual.status;
+            missaoParaEntregar.progressoAtual = QuestManager.Instance.missaoAtual.progressoAtual;
         }
     }
 
@@ -114,7 +212,6 @@ public class NPCInteraction : MonoBehaviour
         if (iconeMissao == null || !darMissaoAoFinalizar || missaoParaEntregar == null)
             return;
 
-        // Esconde o icone enquanto o NPC estiver bloqueado
         if (EstaBloqueado())
         {
             iconeMissao.enabled = false;
@@ -179,6 +276,9 @@ public class NPCInteraction : MonoBehaviour
 
     private void IniciarDialogo()
     {
+        GarantirReferenciasUI();
+        SincronizarEstadoMissao();
+
         if (EstaBloqueado())
         {
             falasAtuais = falasBloqueada;
@@ -209,11 +309,16 @@ public class NPCInteraction : MonoBehaviour
         dialogoAtivo = true;
         indiceFala = 0;
 
+        AudioSFX.Instance?.TocarInteragir();
+
         if (painelInteracao != null)
             painelInteracao.SetActive(false);
 
         if (painelDialogo != null)
+        {
+            AtivarHierarquia(painelDialogo);
             painelDialogo.SetActive(true);
+        }
 
         AtualizarTexto();
     }
@@ -223,15 +328,25 @@ public class NPCInteraction : MonoBehaviour
         indiceFala++;
 
         if (indiceFala < falasAtuais.Length)
+        {
+            AudioSFX.Instance?.TocarInteragir();
             AtualizarTexto();
+        }
         else
+        {
             FinalizarDialogo();
+        }
     }
 
     private void AtualizarTexto()
     {
         if (textoDialogo != null)
+        {
+            AtivarHierarquia(textoDialogo.gameObject);
+            textoDialogo.gameObject.SetActive(true);
+            textoDialogo.enabled = true;
             textoDialogo.text = falasAtuais[indiceFala];
+        }
     }
 
     private void FinalizarDialogo()
@@ -241,7 +356,6 @@ public class NPCInteraction : MonoBehaviour
         if (painelDialogo != null)
             painelDialogo.SetActive(false);
 
-        // Se estava bloqueado, apenas fecha o dialogo e nao entrega nada
         if (EstaBloqueado())
         {
             if (painelInteracao != null && jogadorPerto)
@@ -263,7 +377,11 @@ public class NPCInteraction : MonoBehaviour
             if (!recebeu)
             {
                 dialogoAtivo = true;
-                if (painelDialogo != null) painelDialogo.SetActive(true);
+                if (painelDialogo != null)
+                {
+                    AtivarHierarquia(painelDialogo);
+                    painelDialogo.SetActive(true);
+                }
 
                 if (textoDialogo != null)
                 {
@@ -277,10 +395,10 @@ public class NPCInteraction : MonoBehaviour
             }
 
             recompensaEntregue = true;
+            AudioSFX.Instance?.TocarColetar();
             Debug.Log("Item recebido: " + itemRecompensa.name);
         }
 
-        // --- SISTEMA DE MISSOES ---
         if (darMissaoAoFinalizar && missaoParaEntregar != null && missaoParaEntregar.status == StatusMissao.Disponivel)
         {
             if (QuestManager.Instance != null)
@@ -297,7 +415,6 @@ public class NPCInteraction : MonoBehaviour
             if (QuestManager.Instance != null)
                 QuestManager.Instance.AtualizarProgresso(idAlvoMissao, 1);
         }
-        // --------------------------
 
         if (trocarCenaAoFinalizar)
         {
@@ -309,6 +426,7 @@ public class NPCInteraction : MonoBehaviour
                 return;
             }
 
+            AudioSFX.Instance?.TocarTrocarCena();
             Time.timeScale = 1f;
             SceneManager.LoadScene(nomeCenaDestino);
             return;
