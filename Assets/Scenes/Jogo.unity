@@ -3399,7 +3399,6 @@ Transform:
   - {fileID: 876818556}
   - {fileID: 1201359720}
   - {fileID: 2053010992}
-  - {fileID: 1765159003}
   - {fileID: 991662353}
   - {fileID: 1324862583}
   - {fileID: 559965081}
@@ -3416,6 +3415,7 @@ Transform:
   - {fileID: 1473020221}
   - {fileID: 53999158}
   - {fileID: 1599128626}
+  - {fileID: 1346709626}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &446308221
@@ -4583,6 +4583,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &604080825
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1007086175385697203, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_Name
+      value: Coletavel_livrovermelho
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.756123
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.274945
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.45443743
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7f42ae34c5c4afb43b89306c49851819, type: 3}
 --- !u!1001 &641596059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7043,7 +7100,6 @@ MonoBehaviour:
   falasEmAndamento:
   - Nao me enrrola seu safado!
   falasFaltaItem: []
-  falasFaltaItem: []
   falasConcluida:
   - Boa Gatao, nota 10!
   - O luis quer conversar com voce!
@@ -7060,10 +7116,6 @@ MonoBehaviour:
   - {fileID: 1361454566}
   avancarMissaoAoFinalizar: 1
   idAlvoMissao: redacao
-  verificadorInventario: {fileID: 0}
-  itemIdNecessario: 
-  quantidadeNecessaria: 1
-  consumirItemAoEntregar: 1
   verificadorInventario: {fileID: 0}
   itemIdNecessario: 
   quantidadeNecessaria: 1
@@ -17966,6 +18018,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7984235715617998496, guid: 1c29def964a274b41a85a7bf9fd3fbe5, type: 3}
   m_PrefabInstance: {fileID: 539301529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1346709626 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7131581640513219056, guid: d109cf3e234b1d0408f006f3b8f7ba4e, type: 3}
+  m_PrefabInstance: {fileID: 4979063507232075101}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1357639075
 PrefabInstance:
@@ -89059,11 +89116,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7930012585081907469, guid: 0969d6f13b458124e8a9581c46a88778, type: 3}
   m_PrefabInstance: {fileID: 1761868185}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1765159003 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5967204689667199302, guid: 8c7bc506586703c4787aefe6d0d2fed2, type: 3}
-  m_PrefabInstance: {fileID: 5624826976246609613}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1767456969
 GameObject:
   m_ObjectHideFlags: 0
@@ -92848,7 +92900,6 @@ MonoBehaviour:
   falasEmAndamento:
   - Nao me enrrola seu safado!
   falasFaltaItem: []
-  falasFaltaItem: []
   falasConcluida:
   - Obrigado, vai passar de ano!
   - ouvi dizer que querem um favor seu no segundo andar!
@@ -93177,6 +93228,14 @@ PrefabInstance:
       propertyPath: slotCount
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1964375666233404954, guid: 3f0e9e3310593bd4d90be10630d563e3, type: 3}
+      propertyPath: itemPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1964375666233404954, guid: 3f0e9e3310593bd4d90be10630d563e3, type: 3}
+      propertyPath: 'itemPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2870399207058084215, guid: 1bcae4f3f8f0a8a46832a5d9725f0132, type: 3}
     - target: {fileID: 1994994595074242231, guid: 3f0e9e3310593bd4d90be10630d563e3, type: 3}
       propertyPath: m_Name
       value: Menu
@@ -93214,6 +93273,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 442931989}
     m_Modifications:
+    - target: {fileID: 7131581640513219056, guid: d109cf3e234b1d0408f006f3b8f7ba4e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131581640513219056, guid: d109cf3e234b1d0408f006f3b8f7ba4e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.75
+      objectReference: {fileID: 0}
     - target: {fileID: 3824376123484486255, guid: 8c7bc506586703c4787aefe6d0d2fed2, type: 3}
       propertyPath: m_Name
       value: relogio
@@ -93479,6 +93546,7 @@ SceneRoots:
   - {fileID: 1806105803}
   - {fileID: 1460143789}
   - {fileID: 1685009060}
-  - {fileID: 4979063507232075101}
   - {fileID: 669880515}
   - {fileID: 1243038937}
+  - {fileID: 1081864318}
+  - {fileID: 604080825}

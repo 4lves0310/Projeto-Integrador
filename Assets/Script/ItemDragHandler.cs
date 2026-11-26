@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -39,7 +40,6 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         if (dropSlot != null)
         {
-            // Soltou em cima de um slot: troca ou move normalmente
             if (dropSlot.currentItem != null)
             {
                 dropSlot.currentItem.transform.SetParent(originalSlot.transform);
@@ -57,14 +57,12 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
         else
         {
-            // Soltou fora de qualquer slot: tenta dropar no chão
             if (TentarDroparNoChao(originalSlot))
             {
                 Destroy(gameObject);
                 return;
             }
 
-            // Se não tiver prefabNoChao configurado ou não achar o Player, devolve pro slot
             transform.SetParent(originalParent);
             GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         }
@@ -80,7 +78,6 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (player == null)
             return false;
 
-        // Nasce um pouco abaixo do Player para não coletar no mesmo milissegundo se for coleta automática
         Vector3 posicaoDrop = player.transform.position + new Vector3(0f, -0.8f, 0f);
         GameObject dropObj = Instantiate(data.prefabNoChao, posicaoDrop, Quaternion.identity);
 
@@ -88,6 +85,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (coletavel != null)
         {
             coletavel.quantidade = data.quantity;
+            coletavel.coletavelId = $"{data.itemId}_drop_{Guid.NewGuid()}";
         }
 
         if (originalSlot != null)

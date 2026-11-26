@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4399825971813424976}
   - component: {fileID: 5026192292230562628}
   m_Layer: 7
-  m_Name: Coletavel_Hamb
+  m_Name: Coletavel_livrovermelho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9aaad8edc600348a91b598498bc998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemUIPrefab: {fileID: 2870399207058084215, guid: a8d66c0cdffaff54fa9438a22fedabaa, type: 3}
+  coletavelId: 
+  itemUIPrefab: {fileID: 2870399207058084215, guid: 1bcae4f3f8f0a8a46832a5d9725f0132, type: 3}
   quantidade: 1
   precisaApertarE: 1
   teclaColetar: 101
@@ -94,7 +95,7 @@ SpriteRenderer:
   m_SortingLayerID: -483387379
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6821745833314929579, guid: 854a05bc2d8745e42b141cb869b40045, type: 3}
+  m_Sprite: {fileID: -1276387515315074603, guid: 4f692058755d9c34f9168aa6cfe630e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,7 +144,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.23, y: 0.19}
+    oldSize: {x: 0.29, y: 0.27}
     newSize: {x: 0.23, y: 0.19}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
