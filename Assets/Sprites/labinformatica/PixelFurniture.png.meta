@@ -1,0 +1,640 @@
+fileFormatVersion: 2
+guid: 4b820298456adb148b7c4f0fc0c43dee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5270210123294080457
+    second: PixelFurniture_0
+  - first:
+      213: 2811683166816523538
+    second: PixelFurniture_1
+  - first:
+      213: -6819657014984409792
+    second: PixelFurniture_2
+  - first:
+      213: -5769234517025781321
+    second: PixelFurniture_3
+  - first:
+      213: -7085847471191881225
+    second: PixelFurniture_4
+  - first:
+      213: 5222664409692115570
+    second: PixelFurniture_5
+  - first:
+      213: -6839046043071063906
+    second: PixelFurniture_6
+  - first:
+      213: -4314338917268382856
+    second: PixelFurniture_7
+  - first:
+      213: 5563073934426857049
+    second: PixelFurniture_8
+  - first:
+      213: 3304479355249013799
+    second: PixelFurniture_9
+  - first:
+      213: -3982657427884011004
+    second: PixelFurniture_10
+  - first:
+      213: -1592427090483929966
+    second: PixelFurniture_11
+  - first:
+      213: -3958471034921957065
+    second: PixelFurniture_12
+  - first:
+      213: -4617504245958490513
+    second: PixelFurniture_13
+  - first:
+      213: -685095832613808108
+    second: PixelFurniture_14
+  - first:
+      213: -9110930077905496346
+    second: PixelFurniture_15
+  - first:
+      213: 7437108930307477214
+    second: PixelFurniture_16
+  - first:
+      213: -5674972208017057961
+    second: PixelFurniture_17
+  - first:
+      213: 8645995468092580899
+    second: PixelFurniture_18
+  - first:
+      213: 316980557633454437
+    second: PixelFurniture_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PixelFurniture_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 99
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 732836dc0d37cd6b0800000000000000
+      internalID: -5270210123294080457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 99
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2155b0b71fa150720800000000000000
+      internalID: 2811683166816523538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 98
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04d7ad3b316bb51a0800000000000000
+      internalID: -6819657014984409792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_3
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 113
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b981c206cf8fefa0800000000000000
+      internalID: -5769234517025781321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_4
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 113
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f9020374430aad90800000000000000
+      internalID: -7085847471191881225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_5
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 98
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27216c81c91aa7840800000000000000
+      internalID: 5222664409692115570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_6
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 68
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e985530dbd3d611a0800000000000000
+      internalID: -6839046043071063906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_7
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 65
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87b1393fc936024c0800000000000000
+      internalID: -4314338917268382856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_8
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 66
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95e5fb8d442043d40800000000000000
+      internalID: 5563073934426857049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_9
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 66
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 724ba39377edbdd20800000000000000
+      internalID: 3304479355249013799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_10
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 34
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40217ec9b22cab8c0800000000000000
+      internalID: -3982657427884011004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_11
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 33
+        width: 24
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29c1ffc8fff86e9e0800000000000000
+      internalID: -1592427090483929966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_12
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 33
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 739cdcd019fa019c0800000000000000
+      internalID: -3958471034921957065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_13
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 33
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6649c65a545befb0800000000000000
+      internalID: -4617504245958490513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_14
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 33
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41814f358fc0e76f0800000000000000
+      internalID: -685095832613808108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_15
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 7
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e6550dad597f8180800000000000000
+      internalID: -9110930077905496346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_16
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 4
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edeccda2b2be53760800000000000000
+      internalID: 7437108930307477214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_17
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 4
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 757dde618d27e31b0800000000000000
+      internalID: -5674972208017057961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_18
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 0
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 324ab4dd11fbcf770800000000000000
+      internalID: 8645995468092580899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelFurniture_19
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 3
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56182724324266400800000000000000
+      internalID: 316980557633454437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PixelFurniture_0: -5270210123294080457
+      PixelFurniture_1: 2811683166816523538
+      PixelFurniture_10: -3982657427884011004
+      PixelFurniture_11: -1592427090483929966
+      PixelFurniture_12: -3958471034921957065
+      PixelFurniture_13: -4617504245958490513
+      PixelFurniture_14: -685095832613808108
+      PixelFurniture_15: -9110930077905496346
+      PixelFurniture_16: 7437108930307477214
+      PixelFurniture_17: -5674972208017057961
+      PixelFurniture_18: 8645995468092580899
+      PixelFurniture_19: 316980557633454437
+      PixelFurniture_2: -6819657014984409792
+      PixelFurniture_3: -5769234517025781321
+      PixelFurniture_4: -7085847471191881225
+      PixelFurniture_5: 5222664409692115570
+      PixelFurniture_6: -6839046043071063906
+      PixelFurniture_7: -4314338917268382856
+      PixelFurniture_8: 5563073934426857049
+      PixelFurniture_9: 3304479355249013799
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
